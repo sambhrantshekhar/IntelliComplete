@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Autocomplete System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Smart Autocomplete System</h1>
+        <p>Compare <b>Linear Search</b> vs <b>Trie Algorithm</b></p>
+
+        <input id="input-box" type="text" placeholder="Type a word..." autocomplete="off" />
+
+        <div class="switch">
+            <label>
+                <input type="checkbox" id="useTrie" checked>
+                Use Trie Algorithm
+            </label>
+        </div>
+
+        <ul id="suggestions"></ul>
+
+        <div id="stats"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

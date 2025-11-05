@@ -1,0 +1,52 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: #222;
+    padding: 30px;
+    border-radius: 20px;
+    width: 400px;
+}
+
+#input-box {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+#suggestions {
+    list-style: none;
+    margin-top: 20px;
+    padding: 0;
+}
+
+#suggestions li {
+    background: #333;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+#suggestions li:hover {
+    background: #555;
+}
+
+.switch {
+    margin-top: 10px;
+}
+
+#stats {
+    margin-top: 15px;
+    color: #ccc;
+}
