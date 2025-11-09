@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Smart Autocomplete System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IntelliComplete</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
+
 <body>
-
+  <div class="overlay">
     <div class="container">
-        <h1>Smart Autocomplete System</h1>
-        <p>Compare <b>Linear Search</b> vs <b>Trie Algorithm</b></p>
+     <h1 class="title">IntelliComplete Search</h1>
+     <p class="subtitle"><b>Linear Search</b> vs <b>Trie Algorithm</b></p>
 
-        <input id="input-box" type="text" placeholder="Type a word..." autocomplete="off" />
+     <div class="search-box">
+        <input id="input-box" type="text" placeholder="Search..." autocomplete="off" />
+     </div>
 
-        <div class="switch">
-            <label>
-                <input type="checkbox" id="useTrie" checked>
-                Use Trie Algorithm
-            </label>
-        </div>
+     <div class="controls">
+          <label class="switch">
+          <input type="checkbox" id="useTrie" checked />
+          <span class="slider"></span>
+          </label>
+          <span class="label">Use Trie Algorithm</span>
+          </div>
 
-        <ul id="suggestions"></ul>
+          <div class="dropdown-container">
+          <label for="limitSelect">Words to display:</label>
+          <select id="limitSelect">
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="15">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          </select>
+     </div>
 
-        <div id="stats"></div>
+
+      <ul id="suggestions"></ul>
+      <div id="stats"></div>
     </div>
+  </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
