@@ -5,30 +5,17 @@ from trie import Trie
 
 app = Flask(__name__)
 
-# --------------------------
-# LOAD WORD DATA
-# --------------------------
 with open("words.json", encoding="utf-8") as f:
     data = json.load(f)
-    # Support both array or dictionary format
-    if isinstance(data, dict):
+    if isinstance(data, dict):   
         WORDS = list(data.keys())
     else:
         WORDS = data
-
-# Use a subset for faster startup (optional)
-# WORDS = WORDS[:80000]
-
-# --------------------------
-# INITIALIZE TRIE
-# --------------------------
 trie = Trie()
 for word in WORDS:
     trie.insert(word.lower())
 
-# --------------------------
-# ROUTES
-# --------------------------
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -37,10 +24,12 @@ def index():
 @app.route("/search", methods=["POST"])
 def search():
     data = request.get_json()
-    prefix = data["prefix"].lower()
-    use_trie = data["useTrie"]
-    limit = data.get("limit", 10)  # default = 10
+    prefix = data.get("prefix", "").lower()
+    use_trie = data.get("useTrie", False)
+    limit = int(data.get("limit", 10))
 
+    if not prefix:
+        return jsonify({"results": [], "time": 0})
     REPEAT_COUNT = 20
     start_time = time.perf_counter()
 
@@ -54,11 +43,8 @@ def search():
 
     return jsonify({
         "results": results[:limit],
-        "time": round(elapsed_time, 3),
-        "total_words": len(WORDS),
-        "matches": len(results)
+        "time": round(elapsed_time, 3)
     })
-
 
 
 if __name__ == "__main__":

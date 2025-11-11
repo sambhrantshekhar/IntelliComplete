@@ -9,10 +9,10 @@
 }
 html, body {
   width: 100%;
-  overflow-x: hidden;  /* prevent horizontal scroll */
+  overflow-y: auto;
+  overflow-x: hidden; 
 }
 
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -21,30 +21,43 @@ html, body {
 }
 
 body {
-  height: 100vh;
-  background: linear-gradient(135deg, #8257e7, #7d24d0, #4a0451);
-  background-size: 100% 400%;
-  /* animation: gradientShift 10s ease infinite; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #642ce6, #3f0d6d, #4a0451);
+  background-size: cover;
+  padding-top: 0px;     
+  padding-bottom: 100px;  
+  overflow-x: hidden;
+  overflow-y: auto;
   color: var(--text-light);
+  display: block;        
 }
 
-/* @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-} */
+.subject-box {
+  position: relative;
+  margin: 30px 0 0 30px;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  text-align: left;
+  max-width: 90vw;
+  /* border-left: 4px solid var(--accent); */
+}
 
-/* Glass container */
+
+.subject-box b {
+  color: #fff;
+  font-weight: 600;
+}
+
 .container {
   background: var(--bg-glass);
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
   padding: 40px 30px;
   text-align: center;
   width: 90%;
@@ -65,7 +78,6 @@ body {
   margin-bottom: 25px;
 }
 
-/* Rounded Google-like Search Box */
 .search-box {
   background: white;
   border-radius: 50px;
@@ -89,7 +101,6 @@ body {
   color: #888;
 }
 
-/* Centered Controls */
 .controls {
   margin-top: 20px;
   display: flex;
@@ -103,7 +114,6 @@ body {
   color: #eee;
 }
 
-/* Toggle Switch */
 .switch {
   position: relative;
   display: inline-block;
@@ -152,6 +162,62 @@ body {
   font-size: 0.9rem;
 }
 
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: nowrap;
+  margin-top: 60px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  padding: 40px 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  height: 300px;
+}
+
+#speedChart {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-container {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+
+#speedChart {
+  width: 100%;
+  height: 250px;
+}
+
 #limitSelect {
   padding: 6px 12px;
   border-radius: 8px;
@@ -168,23 +234,22 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #00e0ff;
+  background-color: #540099;
 }
 
 input:checked + .slider:before {
   transform: translateX(24px);
 }
 
-/* Suggestion List */
 #suggestions {
   list-style: none;
   margin-top: 25px;
   text-align: left;
   padding-left: 0;
-  max-height: 300px;          /* limit height of suggestions area */
-  overflow-y: auto;           /* enable vertical scrolling */
-  scrollbar-width: thin;      /* modern browsers */
-  scrollbar-color: #555 #111; /* custom scrollbar color */
+  max-height: 300px;    
+  overflow-y: auto;   
+  scrollbar-width: thin;   
+  scrollbar-color: #555 #111;
 }
 
 #suggestions::-webkit-scrollbar {
@@ -209,25 +274,22 @@ input:checked + .slider:before {
 #suggestions li:hover {
   background: rgba(255, 255, 255, 0.35);
   color: black;
-  transform: scale(1.03);
+  transform: scale(0.95);
 }
 
-
-/* Stats */
 #stats {
   margin-top: 20px;
   font-size: 0.9rem;
   color: #f0f0f0;
 }
 
-/* Footer */
 footer {
   margin-top: 25px;
   color: rgba(255,255,255,0.8);
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
-/* Container styling */
+
 .dropdown-container {
   margin-top: 15px;
   text-align: center;
@@ -239,15 +301,33 @@ footer {
   gap: 8px;
 }
 
-/* Label */
+
 .dropdown-container label {
   font-size: 0.9rem;
   color: #ccc;
 }
 
-/* Modern minimal select */
+/*my name and reg no.*/
+.signature {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  text-align: right;
+  font-size: 1.0rem;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px 20px 20px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.signature b {
+  color: #fff; 
+}
+
 #limitSelect {
-  appearance: none;                 /* remove native arrow */
+  appearance: none;            
   -webkit-appearance: none;
   -moz-appearance: none;
   background: rgba(255, 255, 255, 0.1);
@@ -264,7 +344,6 @@ footer {
   backdrop-filter: blur(6px);
 }
 
-/* Add custom dropdown arrow */
 #limitSelect::after {
   content: "▼";
   position: absolute;
@@ -273,7 +352,6 @@ footer {
   transform: translateY(-50%);
 }
 
-/* Hover / focus effects */
 #limitSelect:hover,
 #limitSelect:focus {
   background: rgba(255, 255, 255, 0.15);
@@ -281,12 +359,10 @@ footer {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-/* Remove ugly blue highlight on focus */
 #limitSelect:focus-visible {
   outline: none;
 }
 
-/* Optional: make options menu look cleaner */
 #limitSelect option {
   background: #222;
   color: #fff;
@@ -294,7 +370,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -304,4 +379,13 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes fadeInBox {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.subject-box,
+.signature {
+  animation: fadeInBox 1s ease-in-out;
 }

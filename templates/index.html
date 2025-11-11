@@ -9,39 +9,56 @@
 
 <body>
   <div class="overlay">
-    <div class="container">
-     <h1 class="title">IntelliComplete Search</h1>
-     <p class="subtitle"><b>Linear Search</b> vs <b>Trie Algorithm</b></p>
 
-     <div class="search-box">
-        <input id="input-box" type="text" placeholder="Search..." autocomplete="off" />
-     </div>
+    <div class="subject-box">
+      <p><b>BCSE202L: Data Structures and Algorithms</b></p>
+    </div>
 
-     <div class="controls">
+    <div class="content-wrapper">
+
+      <div class="container">
+        <h1 class="title">IntelliComplete Search</h1>
+        <p class="subtitle"><b>Linear Search</b> vs <b>Trie Algorithm</b></p>
+
+        <div class="search-box">
+          <input id="input-box" type="text" placeholder="Search..." autocomplete="off" />
+        </div>
+
+        <div class="controls">
           <label class="switch">
-          <input type="checkbox" id="useTrie" checked />
-          <span class="slider"></span>
+            <input type="checkbox" id="useTrie" checked />
+            <span class="slider"></span>
           </label>
           <span class="label">Use Trie Algorithm</span>
-          </div>
+        </div>
 
-          <div class="dropdown-container">
+        <div class="dropdown-container">
           <label for="limitSelect">Words to display:</label>
           <select id="limitSelect">
-          <option value="5" selected>5</option>
-          <option value="10">10</option>
-          <option value="15">10</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
           </select>
-     </div>
+        </div>
 
+        <ul id="suggestions"></ul>
+        <div id="stats"></div>
+      </div>
 
-      <ul id="suggestions"></ul>
-      <div id="stats"></div>
+      <div class="chart-container">
+        <canvas id="speedChart"></canvas>
+      </div>
+
     </div>
-  </div>
 
+    <div class="signature">
+      <p>Developed by <b>Sambhrant Shekhar</b><br><b>24BCE1500</b></p>
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
